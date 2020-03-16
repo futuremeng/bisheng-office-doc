@@ -1,0 +1,60 @@
+@[toc]
+
+# 毕升Office支持文件类型的mime_type
+
+毕升Office根据mime_type来选择相应的应用来打开文件主要的文件类型有：Office文件，文本类型文件，mp3等音频文件，mp4等视频文件。
+
+其中office文件格式包括：doc,docx,xls,xlsx,ppt,pptx；这6种文件对应的mime_type值为：
+
+```json
+{
+    "doc":  "application/msword",
+	"docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+	"xls":  "application/vnd.ms-excel",
+	"xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+	"ppt":  "application/vnd.ms-powerpoint",
+	"pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+}
+```
+
+文本类型文件包括各类文本类型文件：html,xml, js,css,log以及各类应用程序文件；对于大部分文本类型文件mime_type 可以为 text/plain，毕升Office将以默认的文件应用来打开该文件。
+
+音频文件目前支持浏览器能够播放的各类音频文件，各类音频文件对应的mime_type为：
+
+```json
+{
+    mp3:"audio/mpeg",
+    ogg:"audio/ogg",
+    wav:"audio/wav"
+}
+```
+
+视频文件同样需要浏览器支持，目前支持的文件类型以及对应的mime_type值为：
+
+```json
+{
+    mp4:"video/mp4",
+    webm:"video/webm",
+    ogg:"video/ogg"
+}
+```
+
+也支持pdf文件的预览，pdf的mimetype为：
+
+```json
+{
+    pdf:"application/pdf"
+}
+```
+
+同时支持图片类预览：mimetype如下：（以png,jpep为例，更多参考链接： https://www.runoob.com/http/http-content-type.html）
+
+```json
+{
+    png:"image/png",
+    jpeg:"image/jpeg",
+    jpg:"image/jpeg"
+  	
+}
+```
+

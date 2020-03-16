@@ -1,0 +1,73 @@
+@[toc]
+
+# 毕升Office windows 环境部署
+
+@[toc]
+
+在开始安装使用前请阅读毕升Office用户协议：[协议链接](https://bishengoffice.com/apps/blog/posts/agreement.html)
+
+### Windows 环境必要准备
+
+本部署在windows 10下部署以及测试，理论上支持 windows 64位系统。***建议不要***在windows 7 以及 windows server 2010以下系统中部署
+
+windows系统需要安装有 git工具（请自行百度如何安装git）以及zip文件解压工具
+
+**建议选择独立的服务器安装毕升Office。确保服务器如下端口没有被占用：**
+
+80， 27027， 6379，5080，5080，7080，9080，8080，8000
+
+## 下载毕升Office部署文件
+
+1. 下载运行脚本以及必要代码文件
+
+   在你的windows系统**硬盘空间较大**的硬盘下载必要的代码文件。下载方法是，打开windows 命令行工具 CMD（如果不知道如何打开命令行工具，请自行百度）。
+
+   例如：我进入到 D 盘中（如何进入D盘，自行百度）之后，运行如下命令将代码文件下载到我的本地硬盘
+
+   ```
+   git clone https://gitee.com/ibisheng/deploy_win64.git
+   ```
+
+   该命令将自行下载毕升Office必要的代码文件以及运行脚本文件。按照如上命令，D盘下将有一个deploy_win64目录。
+
+2. 下载依赖服务库
+
+   第一步，需要下载毕升Office运行的服务程序。在浏览器中打开地址： https://bisheng-public.oss-cn-zhangjiakou.aliyuncs.com/deploy/win_64/service.zip 等待文件下载完成，下载完将有一个service.zip文件，然后解压该文件，如果解压正常的话，你将看到一个service目录。请将该目录复制到上一步下载的脚本目录中。
+
+3. 下载程序运行的二进制文件
+
+   分别在浏览器中打开如下地址：
+
+   https://bisheng-public.oss-cn-zhangjiakou.aliyuncs.com/deploy/win_64/drive.exe
+
+   https://bisheng-public.oss-cn-zhangjiakou.aliyuncs.com/deploy/win_64/editor_app.exe
+
+   https://bisheng-public.oss-cn-zhangjiakou.aliyuncs.com/deploy/win_64/convert.exe
+
+   https://bisheng-public.oss-cn-zhangjiakou.aliyuncs.com/deploy/win_64/main.exe
+
+   https://bisheng-public.oss-cn-zhangjiakou.aliyuncs.com/deploy/win_64/tools.exe
+
+   等待文件下载完成之后，你将获取5个exe文件，分别为： drive.exe,convert.exe,editor_app.exe,main.exe。将这是个文件拷贝到第一步下载的脚本目录的**bin目录中**。
+
+如果你已经完成了以上步骤，你接下来就可以开始正式部署毕升Office
+
+## 初始化
+
+**打开windows命令行（CMD）**，并进入到你上一步下载的毕升Office部署文件的目录,输入init.bat，然后回车即可开始运行改脚本，等待脚本运行完成，如果没有错误，则你已经完成了毕升Office部署工作。
+
+## 如何启动毕升Office
+
+**打开windows命令行（CMD）**，并进入到你上一步下载的毕升Office部署文件的目录，输入命令start_b.bat命令即可启动毕升Office。改命令将逐步启动毕升Office依赖的各个服务。***在启动过程中不要关闭任何的命令行窗口。同时在启动完成之后，也不要关闭运行中的命令行窗口***
+
+## 如何激活毕升Office
+
+毕升offie激活步骤所有版本都是一样的。具体参考链接：https://www.bishengoffice.com/apps/blog/posts/activecomments.html 。激活完成之后，你需要先关闭毕升Office，然后在重新启动。
+
+## 如何关闭毕升Office
+
+**打开windows命令行（CMD）**，并进入到你上一步下载的毕升Office部署文件的目录，输入命令stop.bat命令即可启动毕升Office
+
+## 相关问题
+
+1. 安装使用过程中如果有疑问可参考[毕升Office使用指南](https://bishengoffice.com/apps/blog/posts/guide.html)

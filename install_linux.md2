@@ -1,0 +1,112 @@
+# 毕升Office linux 环境部署
+
+@[toc]
+
+在开始安装使用前请阅读毕升Office用户协议：[协议链接](https://bishengoffice.com/apps/blog/posts/agreement.html)
+
+本文档介绍如何在linux 64位服务器上直接部署运行毕升Office。该部署方法为直接使用脚本和二进制程序，不需要依赖docker封装。
+
+**建议选择独立的服务器安装毕升Office。确保服务器如下端口没有被占用：**
+
+80， 27027， 6379，5080，5080，7080，9080，8080，8000
+
+## 下载部署毕升Office所需的文件
+
+1. 下载运行脚本以及必要代码文件
+
+   在你的Linux系统中下载本项目到硬盘空间比较大的目录。下载方法可以使用git clone
+
+```
+git clone https://gitee.com/ibisheng/deploy_linux64.git //使用git命令行下载
+```
+
+或者直接打包下载该项目，如下图
+
+![image-20190820232527004](https://bisheng-public.nodoc.cn/resource/image-20190820232527004.png)
+
+打包下载完成之后，对下载的压缩包进行解压。
+
+1. 下载依赖服务库
+
+   依赖库是运行毕升Office需要的相关第三方中间件系统。需要独立安装的主要有mongodb, redis, nginx等。由于linux发行版本的不同，因此需要针对不同的发现版本下载不同的依赖库。具体如下：
+
+   - 如果是centos 7系统：则打开链接 https://bisheng-public.oss-cn-zhangjiakou.aliyuncs.com/deploy/linux/centoslib.zip 下载该文件
+   - 如果是ubuntu 18长期支持版：则打开链接 https://bisheng-public.oss-cn-zhangjiakou.aliyuncs.com/deploy/linux/ubuntulib.zip 下载该文件
+
+   接下来将下载的文件解压，并且将里面的文件夹nginx,mongob,redis,tools拷贝到第一步下载的文件夹中的***lib子文件夹***中。
+
+2. 下载二进制执行文件
+
+   二进制文件是毕升office运行的主体程序。你需要将如下链接中的文件分别下载到第一步下载到文件夹的***bin子文件夹***中:
+
+   https://bisheng-public.oss-cn-zhangjiakou.aliyuncs.com/deploy/linux/main
+
+   https://bisheng-public.oss-cn-zhangjiakou.aliyuncs.com/deploy/linux/editor_app
+
+   https://bisheng-public.oss-cn-zhangjiakou.aliyuncs.com/deploy/linux/convert
+
+   https://bisheng-public.oss-cn-zhangjiakou.aliyuncs.com/deploy/linux/drive
+
+   https://bisheng-public.oss-cn-zhangjiakou.aliyuncs.com/deploy/linux/tools
+
+   以上五个二进制文件请务必拷贝到第一个下载项目文件在的***bin子文件夹***中
+
+## 安装开始安装毕升Office
+
+在完成相关脚本，必要依赖库，以及二进制文件的下载之后并放到上文中指定各子文件夹中之后就可以开始安装毕升Office系统。如果你是要在**其他相同操作系统**服务器中安装，你需要将上述文件夹打包拷贝到目标服务器上即可。
+
+***注意：如下所以命令行中的命令执行都是使用root用户权限执行。如果你的系统环境有限制不能使用root权限，则请修改相关脚本***
+
+在命令行中进入到安装项目所在的文件下，按照如下步骤进行安装：
+
+1. 安装依赖库以及初始化相关目录。
+
+   依赖库是和具体Linux发行版本相关的，因此需要根据不同版本的系统执行不同的脚本
+
+   - 如果是centos 版本，则执行命令运行install.sh脚本
+
+     ```
+     bash install.sh 
+     ```
+
+   - 如果是ubuntu版本，则执行命令行运行install_ubuntu18.sh脚本
+
+     ```
+     bash install_ubuntu18.sh 
+     ```
+
+   执行完以上命令，如果没有错误，则表明依赖库以及都正确安装了。接下来可以进行下一步。
+
+2. 初始化相关数据文件
+
+   运行脚本可以完成相关数据文件的初始化。
+
+   ```
+   bash init.sh
+   ```
+
+   等待初始化完成，如果初始化没有错误则系统即可进入运行状态
+
+## 如何启动毕升Office
+
+在命令后中进入毕升office安装项目脚本目录，运行start.sh命令即可启动毕升Office
+
+```
+bash start.sh
+```
+
+## 如何激活毕升Office
+
+毕升offie激活步骤所有版本都是一样的。具体参考链接：https://www.bishengoffice.com/apps/blog/posts/activecomments.html。激活完成之后，你需要先关闭毕升Office，然后在重新启动。
+
+## 如何关闭毕升Office
+
+在命令行中进入毕升office安装项目脚本目录，运行stop.sh命令即可启动毕升Office
+
+```
+bash stop.sh
+```
+
+## 相关问题
+
+1. 安装使用过程中如果有疑问可参考[毕升Office使用指南](https://bishengoffice.com/apps/blog/posts/guide.html) 
