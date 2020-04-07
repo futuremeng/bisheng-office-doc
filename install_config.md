@@ -58,7 +58,7 @@ bash restart.sh
 
 ## 字体设置
 
-毕升Office默认情况下是使用客户端字体。此时在部署完成之后，不需要做字体上的处理。同时也可以配置所客户端都是用从服务器上下载字体。具体配置是修改 /bisheng_data/workspace/config/config.yml，在改配置文件中添加如下配置：
+毕升Office默认情况下是使用客户端字体。此时在部署完成之后，不需要做字体上的处理。同时也可以配置所有客户端都是用从服务器上下载字体。具体配置是修改 /bisheng_data/workspace/config/config.yml，在改配置文件中添加如下配置：
 
 ```shell
 fonts:
